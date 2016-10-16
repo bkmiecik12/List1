@@ -1,8 +1,9 @@
 include <iostream>
+include "RealNumber.h"
 
 using namespace std;
 
-int main()
+RealName(string a)
 {
 	
 }
