@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "RealNumber.h"
 
 using namespace std;
@@ -7,11 +6,12 @@ using namespace std;
 RealNumber::RealNumber(string a)
 {
 	liczba=a;
+	separate();
 }
 
 RealNumber::~RealNumber()
 {
-	cout<<"Destruktor działa";
+
 }
 
 void RealNumber::display()
@@ -30,3 +30,4 @@ void RealNumber::separate()
 	while(i<liczba.size())
 		mantysa+=liczba[i++];
 }
+
