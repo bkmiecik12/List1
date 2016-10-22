@@ -4,15 +4,17 @@ using namespace std;
 
 class RealNumber
 {
-	string liczba; //jaka jest kazdy widzi
-	string cecha; // czesc calkowita
-	string mantysa; //czesc ulamkowa
-	
 	public:
+	string number; //jaka jest kazdy widzi
+	string partInt; // czesc calkowita
+	string partFract; //czesc ulamkowa
+	
+	
 	RealNumber(string="0.0");
 	~RealNumber();
-	//string add(string);
+	//RealNumber add(RealNumber);//dodawanie
 	//string multiply(string);
 	void separate(); //kropka [.] oddziela
-	void display();
+	void display(); //wyswietl liczbe
+	void alignNumbers(RealNumber); //wyrownanie dlugosci
 };
