@@ -52,5 +52,39 @@ void RealNumber::alignNumbers(RealNumber n)
 		//display();
 	}
 }
+RealNumber RealNumber::add(RealNumber n)
+{
+	RealNumber x;
+	string pom="0",res="";
+	int help;
+	cout<<"bangla";
+	for(int i=partFract.length();i<=0;i--)
+	{
+		help=int (partFract[i]-48+n.partFract[i]-48+pom[0]-48)%10;
+		pom=(char)(help+48)/10;
+		res+=(char)help;
+		cout<<help<<" "<<pom<<endl;
+	}
+	x=res;
+	return x;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
