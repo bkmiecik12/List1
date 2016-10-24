@@ -6,10 +6,10 @@ int main()
 {
 	RealNumber n("129.34");
 	RealNumber m("9.812");
-	n.alignNumbers(m);
-	m.alignNumbers(n);
+	//n.alignNumbers(m);
+	//m.alignNumbers(n);
 	n.display();
 	m.display();
 	cout<<endl;
-	m.add(n);
+	m.add(n).display();
 }

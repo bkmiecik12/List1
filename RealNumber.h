@@ -12,9 +12,9 @@ class RealNumber
 	
 	RealNumber(string="0.0");
 	~RealNumber();
-	RealNumber add(RealNumber);//dodawanie
+	RealNumber add(RealNumber&);//dodawanie
 	//string multiply(string);
 	void separate(); //kropka [.] oddziela
 	void display(); //wyswietl liczbe
-	void alignNumbers(RealNumber); //wyrownanie dlugosci
+	void alignNumbers(RealNumber&); //wyrownanie dlugosci
 };

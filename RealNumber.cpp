@@ -11,7 +11,6 @@ RealNumber::RealNumber(string a)
 
 RealNumber::~RealNumber()
 {
-
 }
 
 void RealNumber::display()
@@ -30,7 +29,7 @@ void RealNumber::separate()
 	while(i<number.length())
 		partFract+=number[i++];
 }
-void RealNumber::alignNumbers(RealNumber n)
+void RealNumber::alignNumbers(RealNumber& n)
 {
 	if(n.partInt.length()>partInt.length())
 	{
@@ -51,19 +50,50 @@ void RealNumber::alignNumbers(RealNumber n)
 		partFract+=h;
 		//display();
 	}
-}
-RealNumber RealNumber::add(RealNumber n)
-{
-	RealNumber x;
-	string pom="0",res="";
-	int help;
-	cout<<"bangla";
-	for(int i=partFract.length();i<=0;i--)
+	else if(partInt.length()>n.partInt.length())
 	{
-		help=int (partFract[i]-48+n.partFract[i]-48+pom[0]-48)%10;
-		pom=(char)(help+48)/10;
-		res+=(char)help;
-		cout<<help<<" "<<pom<<endl;
+		string h="";
+		for(int i=0;i<partInt.length()-n.partInt.length();i++)
+			h+="0";
+			
+		h+=n.partInt;
+		n.partInt=h;
+		//display();
+	}
+	else if(partFract.length()>n.partFract.length())
+	{
+		string h="";
+		for(int i=0;i<partFract.length()-n.partFract.length();i++)
+			h+="0";
+			
+		n.partFract+=h;
+		//display();
+	}
+}
+RealNumber RealNumber::add(RealNumber& n)
+{
+	//n.alignNumbers(this);
+	alignNumbers(n);
+	display();
+	n.display();
+	RealNumber x;
+	char pom1='0',pom2='0';
+	string res="0.0";
+	int help;
+	cout<<"bangla"<<endl;
+	for(int i=partFract.length()-1;i>=0;i--)
+	{
+		pom2=pom1+partFract[i]+(n.partFract[i]-'0');
+		cout<<pom2<<" ";
+		if(pom2>58)
+		{
+			help=pom2-48;
+			pom1=help/10+48;
+			res+=pom2-10;
+		}
+		else res+=pom2;
+		
+		cout<<res<<endl;
 	}
 	x=res;
 	return x;
