@@ -67,25 +67,44 @@ RealNumber RealNumber::add(RealNumber& n)
 	n.display();
 	RealNumber x;
 	char pom1='0',pom2='0';
-	string res="0.0";
+	string res="";
 	int help;
-	cout<<"bangla"<<endl;
+	//cout<<"bangla"<<endl;
 	for(int i=partFract.length()-1;i>=0;i--)
 	{
 		pom2=pom1-'0'+partFract[i]+(n.partFract[i]-'0');
-		cout<<pom2<<" ";
-		if(pom2>58)
+		pom1='0';
+		//cout<<pom2<<" ";
+		if(pom2>57)
 		{
 			help=pom2-48;
 			pom1=help/10+48;
-			res+=pom2-10;
+			pom2-=10;
+			//cout<<help<<"  "<<pom1<<endl;
 		}
-		else res+=pom2;
+		res=pom2+res;
 		
-		cout<<res<<endl;
+		//cout<<res<<endl;
 	}
 	x.partFract=res;
-	x.partInt=pom1;
+	res="";
+	for(int i=partInt.length()-1;i>=0;i--)
+	{
+		pom2=pom1-'0'+partInt[i]+(n.partInt[i]-'0');
+		pom1='0';
+		//cout<<pom2<<" ";
+		if(pom2>57)
+		{
+			help=pom2-48;
+			pom1=help/10+48;
+			pom2-=10;
+			//cout<<help<<"  "<<pom1<<endl;
+		}
+		res=pom2+res;
+		
+		//cout<<res<<endl;
+	}
+	x.partInt=res;
 	return x;
 }
 
