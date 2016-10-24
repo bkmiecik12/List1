@@ -17,4 +17,5 @@ class RealNumber
 	void separate(); //kropka [.] oddziela
 	void display(); //wyswietl liczbe
 	void alignNumbers(RealNumber&); //wyrownanie dlugosci
+	void alignNumbers1(int,int);
 };

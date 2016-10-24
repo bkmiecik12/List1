@@ -31,42 +31,31 @@ void RealNumber::separate()
 }
 void RealNumber::alignNumbers(RealNumber& n)
 {
-	if(n.partInt.length()>partInt.length())
+	int c=max(partInt.length(),n.partInt.length());
+	int m=max(partFract.length(),n.partFract.length());
+	alignNumbers1(c,m);
+	n.alignNumbers1(c,m);
+}
+void RealNumber::alignNumbers1(int c,int m)
+{
+	if(partInt.length()<c)
 	{
 		string h="";
-		for(int i=0;i<n.partInt.length()-partInt.length();i++)
+		for(int i=0;i<c-partInt.length();i++)
 			h+="0";
 			
 		h+=partInt;
 		partInt=h;
 		//display();
 	}
-	else if(n.partFract.length()>partFract.length())
+	
+	else if(partFract.length()<m)
 	{
 		string h="";
-		for(int i=0;i<n.partFract.length()-partFract.length();i++)
+		for(int i=0;i<c-partFract.length();i++)
 			h+="0";
 			
 		partFract+=h;
-		//display();
-	}
-	else if(partInt.length()>n.partInt.length())
-	{
-		string h="";
-		for(int i=0;i<partInt.length()-n.partInt.length();i++)
-			h+="0";
-			
-		h+=n.partInt;
-		n.partInt=h;
-		//display();
-	}
-	else if(partFract.length()>n.partFract.length())
-	{
-		string h="";
-		for(int i=0;i<partFract.length()-n.partFract.length();i++)
-			h+="0";
-			
-		n.partFract+=h;
 		//display();
 	}
 }
@@ -83,7 +72,7 @@ RealNumber RealNumber::add(RealNumber& n)
 	cout<<"bangla"<<endl;
 	for(int i=partFract.length()-1;i>=0;i--)
 	{
-		pom2=pom1+partFract[i]+(n.partFract[i]-'0');
+		pom2=pom1-'0'+partFract[i]+(n.partFract[i]-'0');
 		cout<<pom2<<" ";
 		if(pom2>58)
 		{
@@ -95,7 +84,8 @@ RealNumber RealNumber::add(RealNumber& n)
 		
 		cout<<res<<endl;
 	}
-	x=res;
+	x.partFract=res;
+	x.partInt=pom1;
 	return x;
 }
 
