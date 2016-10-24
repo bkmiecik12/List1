@@ -104,9 +104,56 @@ RealNumber RealNumber::add(RealNumber& n)
 		
 		//cout<<res<<endl;
 	}
+	if(pom1=='1')res=pom1+res;
 	x.partInt=res;
 	return x;
 }
+RealNumber RealNumber::multiply(RealNumber& n)
+{
+	alignNumbers(n);
+	display();
+	n.display();
+	string s1=partInt+partFract;
+	string s2=n.partInt+n.partFract;
+	string res1="";
+	string res2="";
+	//cout<<s1.length()<<endl<<s2<<endl<<endl;
+	for(int i=s2.length()-1;i>=0;i--)
+	{
+		//cout<<"bangla\n";
+		
+		char pom1='0',pom2='0';
+		int help;
+		for(int j=s1.length()-1;j>=0;j--)
+		{
+			pom2=pom1+(s2[i]-'0')*(s1[j]-'0');
+			//cout<<pom2<<" ";
+			pom1='0';
+			if(pom2>57)
+			{
+				help=pom2-'0';
+				pom1=(help/10)+'0';
+				pom2=(help%10)+'0';
+				//cout<<pom2<<"  "<<pom1<<"\n";
+			}
+			
+			res1=pom2+res1;
+			
+		}
+		if(pom1>'0') res1=pom1+res1;
+		
+		for(int ii=i;ii<s2.length()-1;ii++)
+			res1+='0';
+		cout<<res1<<endl;
+		
+		//if(res2.length()>0)wyrownaj i dodaj res1+res2
+		
+		res2=res1;
+		res1="";
+	}
+	return n;
+}
+
 
 
 

@@ -4,12 +4,13 @@ using namespace std;
 
 int main()
 {
-	RealNumber n("129.34");
-	RealNumber m("9.812");
+	RealNumber n("929.34");
+	RealNumber m("4.812");
 	//n.alignNumbers(m);
 	//m.alignNumbers(n);
-	n.display();
 	m.display();
+	n.display();
 	cout<<endl;
-	m.add(n).display();
+	//m.add(n).display();
+	m.multiply(n);
 }

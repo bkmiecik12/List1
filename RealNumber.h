@@ -13,7 +13,7 @@ class RealNumber
 	RealNumber(string="0.0");
 	~RealNumber();
 	RealNumber add(RealNumber&);//dodawanie
-	//string multiply(string);
+	RealNumber multiply(RealNumber&);//mnozenie
 	void separate(); //kropka [.] oddziela
 	void display(); //wyswietl liczbe
 	void alignNumbers(RealNumber&); //wyrownanie dlugosci
