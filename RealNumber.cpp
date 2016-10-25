@@ -118,6 +118,7 @@ RealNumber RealNumber::multiply(RealNumber& n)
 	string s2=n.partInt+n.partFract;
 	string res1="";
 	string res2="";
+	RealNumber x;
 	cout<<s1<<endl<<s2<<endl<<endl;
 	for(int i=s2.length()-1;i>=0;i--)
 	{
@@ -186,10 +187,17 @@ RealNumber RealNumber::multiply(RealNumber& n)
 		res1="";
 		
 	}
-	//cout<<n.partFract.length()<<" "<<partFract.length()<<endl;
-	cout<<res2<<endl;
+	int countF=n.partFract.length()+partFract.length(),l=res2.length();
+	int i=0;
+	while(res2[i]=='0')i++;
+	x.partInt=res2.substr(i,l-countF);
+	i=res2.length()-1;
+	cout<<i<<" "<<res2<<endl;
+	while(res2[i]=='0')i--;
+	x.partFract=res2.substr(l-countF,res2.length()-(res2.length()-i-1));
+	cout<<x.partInt<<endl;
 	
-	return n;
+	return x;
 }
 
 

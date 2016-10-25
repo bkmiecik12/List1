@@ -12,5 +12,5 @@ int main()
 	n.display();
 	cout<<endl;
 	//m.add(n).display();
-	m.multiply(n);
+	m.multiply(n).display();
 }
