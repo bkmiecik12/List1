@@ -1,6 +1,5 @@
 #include <iostream>
 #include "RealNumber.h"
-#include<cmath>
 
 using namespace std;
 
@@ -50,7 +49,7 @@ void RealNumber::alignNumbers1(int c,int m)
 		//display();
 	}
 	
-	else if(partFract.length()<m)
+	if(partFract.length()<m)
 	{
 		string h="";
 		for(int i=0;i<c-partFract.length();i++)
@@ -62,15 +61,14 @@ void RealNumber::alignNumbers1(int c,int m)
 }
 RealNumber RealNumber::add(RealNumber& n)
 {
-	//n.alignNumbers(this);
 	alignNumbers(n);
-	display();
-	n.display();
+	//display();
+	//n.display();
 	RealNumber x;
 	char pom1='0',pom2='0';
 	string res="";
 	int help;
-	//cout<<"bangla"<<endl;
+	cout<<endl;
 	for(int i=partFract.length()-1;i>=0;i--)
 	{
 		pom2=pom1-'0'+partFract[i]+(n.partFract[i]-'0');
@@ -107,6 +105,7 @@ RealNumber RealNumber::add(RealNumber& n)
 	}
 	if(pom1=='1')res=pom1+res;
 	x.partInt=res;
+	cout<<"DODAWANIE"<<endl;
 	return x;
 }
 RealNumber RealNumber::multiply(RealNumber& n)
@@ -119,7 +118,7 @@ RealNumber RealNumber::multiply(RealNumber& n)
 	string res1="";
 	string res2="";
 	RealNumber x;
-	cout<<s1<<endl<<s2<<endl<<endl;
+	cout<<endl;
 	for(int i=s2.length()-1;i>=0;i--)
 	{
 		//cout<<"bangla\n";
@@ -129,7 +128,7 @@ RealNumber RealNumber::multiply(RealNumber& n)
 		for(int j=s1.length()-1;j>=0;j--)		//DO POPRAWY!!!git
 		{
 			pom2=pom1+((s2[i]-'0')*(s1[j]-'0'));
-			cout<<pom2<<" ";
+			//cout<<pom2<<" ";
 			pom1='0';
 			if(pom2>48)
 			{
@@ -142,13 +141,13 @@ RealNumber RealNumber::multiply(RealNumber& n)
 			//cout<<res1<<" ";
 		}
 		
-		cout<<res1<<endl;
+		//cout<<res1<<endl;
 		if(pom1>48) res1=pom1+res1;
 		
 		for(int ii=i;ii<s2.length()-1;ii++)
 			res1+='0';
 		
-		cout<<res1<<" "<<res2<<endl;
+		//cout<<res1<<" "<<res2<<endl;
 		if(res2.length()>0)
 		{
 			string h="";
@@ -192,11 +191,12 @@ RealNumber RealNumber::multiply(RealNumber& n)
 	while(res2[i]=='0')i++;
 	x.partInt=res2.substr(i,l-countF);
 	i=res2.length()-1;
-	cout<<i<<" "<<res2<<endl;
-	while(res2[i]=='0')i--;
-	x.partFract=res2.substr(l-countF,res2.length()-(res2.length()-i-1));
-	cout<<x.partInt<<endl;
 	
+	while(res2[i]=='0')i--;
+	
+	x.partFract=res2.substr(l-countF);
+	//cout<<x.partInt<<endl;
+	cout<<"MNOŻENIE"<<endl;
 	return x;
 }
 
