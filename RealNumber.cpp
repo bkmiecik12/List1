@@ -1,5 +1,6 @@
 #include <iostream>
 #include "RealNumber.h"
+#include<cmath>
 
 using namespace std;
 
@@ -111,46 +112,84 @@ RealNumber RealNumber::add(RealNumber& n)
 RealNumber RealNumber::multiply(RealNumber& n)
 {
 	alignNumbers(n);
-	display();
-	n.display();
+	//display();
+	//n.display();
 	string s1=partInt+partFract;
 	string s2=n.partInt+n.partFract;
 	string res1="";
 	string res2="";
-	//cout<<s1.length()<<endl<<s2<<endl<<endl;
+	cout<<s1<<endl<<s2<<endl<<endl;
 	for(int i=s2.length()-1;i>=0;i--)
 	{
 		//cout<<"bangla\n";
 		
 		char pom1='0',pom2='0';
 		int help;
-		for(int j=s1.length()-1;j>=0;j--)
+		for(int j=s1.length()-1;j>=0;j--)		//DO POPRAWY!!!
 		{
-			pom2=pom1+(s2[i]-'0')*(s1[j]-'0');
-			//cout<<pom2<<" ";
+			pom2=pom1+((s2[i]-'0')*(s1[j]-'0'));
+			cout<<(int)pom2<<" ";
 			pom1='0';
-			if(pom2>57)
+			if((int)pom2>57)
 			{
-				help=pom2-'0';
-				pom1=(help/10)+'0';
-				pom2=(help%10)+'0';
-				//cout<<pom2<<"  "<<pom1<<"\n";
+				help=pom2;
+				pom1=(help/10)+48;
+				pom2=(help%10)+48;
+				//cout<<help<<"  "<<pom1<<" "<<pom2<<"\n";
 			}
 			
 			res1=pom2+res1;
-			
+			//cout<<res1<<" ";
 		}
-		if(pom1>'0') res1=pom1+res1;
+		
+		cout<<res1<<endl;
+		if(pom1>48) res1=pom1+res1;
 		
 		for(int ii=i;ii<s2.length()-1;ii++)
 			res1+='0';
-		cout<<res1<<endl;
 		
-		//if(res2.length()>0)wyrownaj i dodaj res1+res2
+		cout<<res1<<" "<<res2<<endl;
+		if(res2.length()>0)
+		{
+			string h="";
+			for(int ii=res1.length()-res2.length();ii>0;ii--)
+				h+='0';
+			
+			res2=h+res2;
+			//cout<<res1.length()<<" "<<res2.length()<<" "<<res1<<" "<<res2<<endl;
+			char pom12='0',pom22='0';
+			string temp="";
+			int help2;
+			//cout<<"bangla"<<endl;
+			for(int ii=res1.length()-1;ii>=0;ii--)
+			{
+				pom22=pom12-'0'+res1[ii]+(res2[ii]-'0');
+				pom12='0';
+				//cout<<pom2<<" ";
+				if(pom22>57)
+				{
+					help2=pom22-48;
+					pom12=help2/10+48;
+					pom22-=10;
+					//cout<<help<<"  "<<pom1<<endl;
+				}
+			temp=pom22+temp;
 		
-		res2=res1;
+		//cout<<res<<endl;
+			}
+			res2=temp;
+			if(pom12=='1')res2=pom12+res2;
+		}//wyrownaj i dodaj res1+res2
+		else res2=res1;
+		//cout<<res2<<" "<<res1<<endl;
+		
+		
 		res1="";
+		
 	}
+	//cout<<n.partFract.length()<<" "<<partFract.length()<<endl;
+	cout<<res2<<endl;
+	
 	return n;
 }
 
