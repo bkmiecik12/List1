@@ -125,19 +125,18 @@ RealNumber RealNumber::multiply(RealNumber& n)
 		
 		char pom1='0',pom2='0';
 		int help;
-		for(int j=s1.length()-1;j>=0;j--)		//DO POPRAWY!!!
+		for(int j=s1.length()-1;j>=0;j--)		//DO POPRAWY!!!git
 		{
 			pom2=pom1+((s2[i]-'0')*(s1[j]-'0'));
-			cout<<(int)pom2<<" ";
+			cout<<pom2<<" ";
 			pom1='0';
-			if((int)pom2>57)
+			if(pom2>48)
 			{
-				help=pom2;
+				help=pom2-48;
 				pom1=(help/10)+48;
 				pom2=(help%10)+48;
 				//cout<<help<<"  "<<pom1<<" "<<pom2<<"\n";
 			}
-			
 			res1=pom2+res1;
 			//cout<<res1<<" ";
 		}
