@@ -6,6 +6,7 @@ class RealNumber
 {
 	public:
 	string number; //jaka jest kazdy widzi
+	string sign; //znak
 	string partInt; // czesc calkowita
 	string partFract; //czesc ulamkowa
 	

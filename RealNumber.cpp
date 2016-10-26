@@ -15,12 +15,19 @@ RealNumber::~RealNumber()
 
 void RealNumber::display()
 {
-	cout<<partInt<<","<<partFract<<endl;
+	cout<<sign<<partInt<<","<<partFract<<endl;
 }
 
 void RealNumber::separate()
 {
 	unsigned int i=0;
+	if(number[0]=='-')
+	{
+		sign='-';
+		i++;
+	}
+	else sign="";
+	
 	while(number[i]!='.')
 		partInt+=number[i++];
 		
@@ -105,6 +112,7 @@ RealNumber RealNumber::add(RealNumber& n)
 	}
 	if(pom1=='1')res=pom1+res;
 	x.partInt=res;
+	if(sign=="-" && n.sign=="-") x.sign="-";
 	cout<<"DODAWANIE"<<endl;
 	return x;
 }
@@ -186,6 +194,7 @@ RealNumber RealNumber::multiply(RealNumber& n)
 		res1="";
 		
 	}
+	if((sign=="-" && n.sign=="")||(n.sign=="-" && sign=="")) x.sign="-";
 	int countF=n.partFract.length()+partFract.length(),l=res2.length();
 	int i=0;
 	while(res2[i]=='0')i++;
