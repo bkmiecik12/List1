@@ -10,7 +10,6 @@ class RealNumber
 	string partInt; // czesc calkowita
 	string partFract; //czesc ulamkowa
 	
-	
 	RealNumber(string="0.0");
 	~RealNumber();
 	RealNumber add(RealNumber&);//dodawanie
